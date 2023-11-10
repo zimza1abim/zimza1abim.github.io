@@ -57,17 +57,17 @@ menu:
     url:               /study/
     submenu:
       - title: Python
-        url: /python/
+        url:      /python/
       - title: Linux
-        url: /linux-ubuntu/
+        url:      /linux-ubuntu/
       - title: AppSec
-        url: /appsec/
+        url:      /appsec/
       - title: White-Hat
-        url: /white-hat/
+        url:      /white-hat/
       - title: On-premise
-        url: /on-premise/
+        url:      /on-premise/
       - title: Cloud
-        url: /cloud/
+        url:      /cloud/
   - title:             Documentation
     url:               /docs/
   - title:             About
