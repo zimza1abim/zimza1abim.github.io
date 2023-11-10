@@ -93,15 +93,6 @@ permalink:             /:categories/:year-:month-:day-:title/
 paginate:              10
 paginate_path:         /:num/
 
-collections:
-  featured_categories:
-    permalink:         /:name/
-    output:            true
-
-  featured_tags:
-    permalink:         /:name/
-    output:            true
-
 # Theme
 # ---------------------------------------------------------------------------------------
 
