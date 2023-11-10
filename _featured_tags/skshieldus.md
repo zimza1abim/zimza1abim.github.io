@@ -1,10 +1,9 @@
----
 layout: tag-list
 type: tag
 sidebar: true
-bigtitle: Python
-slug: python
+bigtitle: SK쉴더스
+slug: skshieldus
 description: >
-  파이썬 언어
+  SK 쉴더스
 sitemap: false
 ---

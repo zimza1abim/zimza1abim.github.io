@@ -1,10 +1,9 @@
----
 layout: tag-list
 type: tag
 sidebar: true
-bigtitle: Python
-slug: python
+bigtitle: 클라우드
+slug: cloud
 description: >
-  파이썬 언어
+  클라우드
 sitemap: false
 ---
