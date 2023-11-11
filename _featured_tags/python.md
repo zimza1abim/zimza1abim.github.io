@@ -1,10 +1,8 @@
 ---
-layout: tag-list
-type: tag
-sidebar: true
-bigtitle: Python
+layout: list
+title: 파이썬
 slug: python
 description: >
-  파이썬 언어
+  파이썬 언어 공부
 sitemap: false
 ---
