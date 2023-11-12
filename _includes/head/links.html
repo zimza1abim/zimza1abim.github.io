@@ -1,4 +1,5 @@
 {% assign lang = include.lang | default:site.lang | default:'en' %}
 <link rel="alternate" href="{{ page.url | absolute_url }}" hreflang="{{ lang | downcase | replace:'_','-' }}">
 <link rel="shortcut icon" href="{{ '/assets/icons/favicon.ico' | relative_url }}">
+<link rel="icon" href="{{ '/assets/icons/favicon.ico' | relative_url }}">
 <link rel="apple-touch-icon" href="{{ '/assets/img/apple-touch-icon-logo.png' | relative_url }}">
