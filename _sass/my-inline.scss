@@ -17,3 +17,130 @@
     font-weight: normal;
     font-style: normal;
   }
+
+  html {
+    --link-color: rgb(0, 112, 201);
+    --main-background-color: #ffffff;
+    --main-text-color: hsl(0, 0%, 20%); //본문 텍스트 색
+    --border-color: #ebebeb;
+    --highlight-color: #727272;
+    --menu-text-color: rgb(71, 71, 71);
+    --highlight-bg: rgb(241, 243, 228); //코드 블럭 배경색
+    --gray-bg: #f6cfec; //강조표시(``) 배경색
+    --block-bg : #F8F9FA;
+    --block-left : rgba(247, 196, 10, 0.5); // 들여쓰기 색상
+    --block-color : #181823;
+    --code-bg : #EEEEEE;
+  }
+
+  body {
+    background-color: var(--main-background-color);
+    color: var(--main-text-color);
+    padding: 1em;
+  }
+  
+  #_navbar {
+    background-color: var(--main-background-color) !important;
+  }
+  
+  .nav-btn-bar {
+    background-color: var(--main-background-color) !important;
+  }
+  
+  article {
+    max-width: 650px;
+    margin: 2em auto;
+  }
+  
+  .flip-title {
+    color: var(--main-text-color);
+  }
+  
+  h1 {
+    font-size: 2rem;
+  }
+  
+  h2 {
+    font-size: 1.5rem;
+    margin-top: 2em;
+  }
+  
+  p {
+    font-size: 1.1rem;
+  }
+  
+  main a {
+    color: var(--main-text-color) !important;
+  }
+  
+  .external {
+    color: var(--main-text-color) !important;
+  }
+  
+  .note-sm {
+    color: var(--main-text-color);
+  }
+
+  th {
+    background-color: var(--border-color);
+    color: var(--main-text-color);
+  }
+  
+  td {
+    background-color: var(--main-background-color) !important;
+  }
+  
+  .content .avatar {
+    float: right;
+    box-sizing: content-box;
+    border: 1rem solid var(--main-background-color) !important;
+    transition: border-color 1s ease;
+    margin-top: -1.5rem;
+    margin-right: -1rem;
+  }
+  
+  .avatar {
+    width: 8rem;
+    border-radius: 100%;
+    overflow: hidden;
+    display: inline-block;
+    position: relative;
+    z-index: 1;
+  }
+  
+  .nav-btn {
+    color: var(--menu-text-color);
+  }
+  
+  pre {
+    background-color: var(--highlight-bg) !important;
+  }
+  
+  mjx-container {
+    overflow-x: hidden;
+    overflow-y: hidden;
+  }
+  
+  blockquote {
+    background-color: var(--block-bg) !important;
+    border-left-color : var(--block-left) !important;
+    color: var(--block-color) !important;
+  }
+  
+  blockquote.lead {
+    font-size: 0.9em !important;
+  }
+  
+  code {
+    // background-color: var(--gray-bg);
+    border-radius: 10px;
+  }
+  
+  .hljs { 
+    background-color: var(--code-bg) !important;
+    color: var(--block-color) !important;
+  }
+  
+  mjx-container {
+    background-color: var(--main-background-color) !important;
+  }

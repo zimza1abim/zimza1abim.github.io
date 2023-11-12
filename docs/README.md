@@ -15,7 +15,8 @@ Should you discover a mistake in the docs (or a bug in general) feel free to [op
 While this manual tries to be beginner-friendly, as a user of Jekyll it is assumed that you are comfortable running shell commands and editing text files.
 {:.note}
 
-https://gist.github.com/rxaviers/7360908
+
+
 
 ## Getting started
 * [Install]{:.heading.flip-title} --- How to install and run Hydejack.
@@ -48,3 +49,10 @@ https://gist.github.com/rxaviers/7360908
 [LICENSE]: ../LICENSE.md
 [NOTICE]: ../NOTICE.md
 [CHANGELOG]: ../CHANGELOG.md
+
+
+-----------
+https://gist.github.com/rxaviers/7360908
+https://assaeunji.github.io/etc/2020-02-25-jekyll/
+<mark style='background-color: #ffdce0'> 연한 핑크 </mark>
+<mark style='background-color: #fff5b1'> 연한 노랑 </mark>
