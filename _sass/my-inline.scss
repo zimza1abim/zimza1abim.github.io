@@ -4,20 +4,6 @@
 // }
 
 // You can add CSS rules here that will be inlined into each document.
-@font-face {
-    font-family: 'Humanbumsuk';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2210-2@1.0/Humanbumsuk.woff2') format('woff2');
-    font-weight: normal;
-    font-style: normal;
-  }
-  
-  @font-face {
-    font-family: 'GmarketSansMedium';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-  }
-
   html {
     --link-color: rgb(0, 112, 201);
     --main-background-color: #ffffff;
@@ -47,26 +33,8 @@
     background-color: var(--main-background-color) !important;
   }
   
-  article {
-    max-width: 650px;
-    margin: 2em auto;
-  }
-  
   .flip-title {
     color: var(--main-text-color);
-  }
-  
-  h1 {
-    font-size: 2rem;
-  }
-  
-  h2 {
-    font-size: 1.5rem;
-    margin-top: 2em;
-  }
-  
-  p {
-    font-size: 1.1rem;
   }
   
   main a {
