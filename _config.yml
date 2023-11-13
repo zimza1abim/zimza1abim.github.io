@@ -69,7 +69,7 @@ menu:
         url: /on-premise/
       - title: Cloud
         url: /cloud/
-  - title:             Documentation
+  - title:             Docs
     url:               /docs/
   - title:             About
     url:               /about/
