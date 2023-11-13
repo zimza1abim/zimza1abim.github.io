@@ -22,7 +22,16 @@
   body {
     background-color: var(--main-background-color);
     color: var(--main-text-color);
-    padding: 1em;
+  }
+
+  blockquote {
+    background-color: var(--block-bg) !important;
+    border-left-color : var(--block-left) !important;
+    color: var(--block-color) !important;
+  }
+  
+  blockquote.lead {
+    font-size: 0.9em !important;
   }
   
   #_navbar {
@@ -63,17 +72,6 @@
     box-sizing: content-box;
     border: 1rem solid var(--main-background-color) !important;
     transition: border-color 1s ease;
-    margin-top: -1.5rem;
-    margin-right: -1rem;
-  }
-  
-  .avatar {
-    width: 8rem;
-    border-radius: 100%;
-    overflow: hidden;
-    display: inline-block;
-    position: relative;
-    z-index: 1;
   }
   
   .nav-btn {
@@ -89,15 +87,7 @@
     overflow-y: hidden;
   }
   
-  blockquote {
-    background-color: var(--block-bg) !important;
-    border-left-color : var(--block-left) !important;
-    color: var(--block-color) !important;
-  }
-  
-  blockquote.lead {
-    font-size: 0.9em !important;
-  }
+
   
   .hljs { 
     background-color: var(--code-bg) !important;
