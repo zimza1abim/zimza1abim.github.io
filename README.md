@@ -1,6 +1,4 @@
-# Hydejack Starter Kit
-
-A quicker, cleaner way to get started blogging with [Hydejack](https://hydejack.com/).
+ [blog](https://zimza1abim.github.io/)
 
 ## Quick Start
 ### Running locally

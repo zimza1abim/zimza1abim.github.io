@@ -19,7 +19,6 @@ redirect_from:
 **Self Portrait**
 
 
-
 [blog]: /
 [portfolio]: https://hydejack.com/examples/
 [resume]: https://hydejack.com/resume/
