@@ -74,8 +74,8 @@ menu:
     submenu:
       - title: 프로젝트
         url: /project/
-  - title:             Docs
-    url:               /docs/
+ # - title:             Docs
+ #   url:               /docs/
   - title:             About
     url:               /about/
 
