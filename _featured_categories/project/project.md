@@ -1,9 +1,9 @@
 ---
 layout: list
-title: White-Hat
-slug: white-hat
+title: Project
+slug: project
 description: >
-  모의 해킹
+  프로젝트
 sitemap: false
 order: 3
 ---
