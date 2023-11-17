@@ -56,3 +56,4 @@ https://gist.github.com/rxaviers/7360908
 https://assaeunji.github.io/etc/2020-02-25-jekyll/
 <mark style='background-color: #ffdce0'> 연한 핑크 </mark>
 <mark style='background-color: #fff5b1'> 연한 노랑 </mark>
+<span style='background-color: #dcffe4'> 연한 초록 </span>
