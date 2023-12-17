@@ -1,6 +1,6 @@
 ---
 layout: about
-image: /assets/img/blog/hydejack-9.jpg
+image: /assets/img/logo.png
 description: >
   **클라우드 기반의 모빌리티 융합보안 과정**의 일환으로 블로그 시작.
 hide_description: true
