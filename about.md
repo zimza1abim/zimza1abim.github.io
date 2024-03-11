@@ -9,14 +9,86 @@ redirect_from:
 ---
 
 # About
+## Portfolio
 
-<!--author-->
+![00](/assets/img/docs/portfolio/00.png){:.lead width="800" height="100" loading="lazy"}
+과정 평가 성적
+{:.figcaption}
 
-## honeykkk
+![01](/assets/img/docs/portfolio/01.png){:.lead width="800" height="100" loading="lazy"}
+클라우드 취약점 진단 결과 보고서
+{:.figcaption}
 
-클라우드, 리눅스, 보안, 파이썬, 모의 해킹, 취약점 진단, 정보 보안
-{:.lead}
-**Self Portrait**
+![02](/assets/img/docs/portfolio/02.png){:.lead width="800" height="100" loading="lazy"}
+인프라(OS) 취약점 진단 결과 보고서
+{:.figcaption}
+
+![03](/assets/img/docs/portfolio/03.png){:.lead width="800" height="100" loading="lazy"}
+DBMS(Oracle) 취약점 진단 결과 보고서
+{:.figcaption}
+
+![04](/assets/img/docs/portfolio/04.png){:.lead width="800" height="100" loading="lazy"}
+Nginx 취약점 진단 결과 보고서
+{:.figcaption}
+
+![05](/assets/img/docs/portfolio/05.png){:.lead width="800" height="100" loading="lazy"}
+Tomcat 취약점 진단 결과 보고서
+{:.figcaption}
+
+![06](/assets/img/docs/portfolio/06.png){:.lead width="800" height="100" loading="lazy"}
+WEB/API 취약점 진단 결과 보고서
+{:.figcaption}
+
+![07](/assets/img/docs/portfolio/07.png){:.lead width="800" height="100" loading="lazy"}
+모듈 프로젝트1 아키텍처
+{:.figcaption}
+
+![08](/assets/img/docs/portfolio/08.png){:.lead width="800" height="100" loading="lazy"}
+최종 프로젝트 아키텍처
+{:.figcaption}
+
+![09](/assets/img/docs/portfolio/09.png){:.lead width="800" height="100" loading="lazy"}
+모듈 프로젝트2 - Blind SQL Injection(1)
+{:.figcaption}
+
+![10](/assets/img/docs/portfolio/10.png){:.lead width="800" height="100" loading="lazy"}
+모듈 프로젝트2 - Blind SQL Injection(2)
+{:.figcaption}
+
+![11](/assets/img/docs/portfolio/11.png){:.lead width="800" height="100" loading="lazy"}
+진단 수행 - Blind SQL Injection(1)
+{:.figcaption}
+
+![12](/assets/img/docs/portfolio/12.png){:.lead width="800" height="100" loading="lazy"}
+진단 수행 - Blind SQL Injection(2)
+{:.figcaption}
+
+![13](/assets/img/docs/portfolio/13.png){:.lead width="800" height="100" loading="lazy"}
+진단 수행 - Blind SQL Injection(3)
+{:.figcaption}
+
+![14](/assets/img/docs/portfolio/14.png){:.lead width="800" height="100" loading="lazy"}
+진단 수행 - Command Injection(1)
+{:.figcaption}
+
+![15](/assets/img/docs/portfolio/15.png){:.lead width="800" height="100" loading="lazy"}
+진단 수행 - Command Injection(2)
+{:.figcaption}
+
+![16](/assets/img/docs/portfolio/16.png){:.lead width="800" height="100" loading="lazy"}
+진단 수행 - Command Injection(3)
+{:.figcaption}
+
+![17](/assets/img/docs/portfolio/17.png){:.lead width="800" height="100" loading="lazy"}
+진단 수행 - 악성코드파일 업로드(1)
+{:.figcaption}
+
+![18](/assets/img/docs/portfolio/18.png){:.lead width="800" height="100" loading="lazy"}
+진단 수행 - 악성코드파일 업로드(2)
+{:.figcaption}
+
+
+
 
 
 [blog]: /
