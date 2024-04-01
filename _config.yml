@@ -65,14 +65,10 @@ menu:
         url: /appsec/
       - title: White-Hat
         url: /white-hat/
-      - title: On-premise
-        url: /on-premise/
       - title: Cloud
         url: /cloud/
       - title: 보안 관제
         url: /security-control/
-      - title: 보안 컨설팅
-        url: /security-consulting/
       - title: 취약점 진단
         url: /security-vulnerability/
   - title:             Project
