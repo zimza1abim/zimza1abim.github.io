@@ -1,94 +1,23 @@
 ---
 layout: about
 image: /assets/img/logo.png
-description: >
-  **클라우드 기반의 모빌리티 융합보안 과정**의 일환으로 블로그 시작.
+description:
 hide_description: true
 redirect_from:
   - /download/
 ---
 
-# About
-## Portfolio
+<iframe allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write" frameborder="0" height="450" style="width:100%;max-width:660px;overflow:hidden;border-radius:10px;" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation" src="https://embed.music.apple.com/us/playlist/take-a-coffee-break/pl.u-mJy88Drtz6dpV29"></iframe>
 
-![00](/assets/img/docs/portfolio/00.png){:.lead width="800" height="100" loading="lazy"}
-과정 평가 성적
-{:.figcaption}
+<iframe allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write" frameborder="0" height="450" style="width:100%;max-width:660px;overflow:hidden;border-radius:10px;" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation" src="https://embed.music.apple.com/us/playlist/%ED%97%AC%EC%8A%A4-%EB%9F%AC%EB%8B%9D-hit-the-gym-running/pl.u-76oNNKpCWpjBe8D"></iframe>
 
-![01](/assets/img/docs/portfolio/01.png){:.lead width="800" height="100" loading="lazy"}
-클라우드 취약점 진단 결과 보고서
-{:.figcaption}
+<iframe allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write" frameborder="0" height="450" style="width:100%;max-width:660px;overflow:hidden;border-radius:10px;" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation" src="https://embed.music.apple.com/us/playlist/daily-hype-music/pl.u-mJy88W8Cz6dpV29"></iframe>
 
-![02](/assets/img/docs/portfolio/02.png){:.lead width="800" height="100" loading="lazy"}
-인프라(OS) 취약점 진단 결과 보고서
-{:.figcaption}
+<iframe allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write" frameborder="0" height="450" style="width:100%;max-width:660px;overflow:hidden;border-radius:10px;" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation" src="https://embed.music.apple.com/us/playlist/a-day-in-winter/pl.u-e98llDjSzA3o80R"></iframe>
 
-![03](/assets/img/docs/portfolio/03.png){:.lead width="800" height="100" loading="lazy"}
-DBMS(Oracle) 취약점 진단 결과 보고서
-{:.figcaption}
+<iframe allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write" frameborder="0" height="450" style="width:100%;max-width:660px;overflow:hidden;border-radius:10px;" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation" src="https://embed.music.apple.com/us/playlist/%ED%95%9C%EA%B0%95-%EC%97%AC%EB%A6%84%EB%B0%A4/pl.u-e98lMRqCzA3o80R"></iframe>
 
-![04](/assets/img/docs/portfolio/04.png){:.lead width="800" height="100" loading="lazy"}
-Nginx 취약점 진단 결과 보고서
-{:.figcaption}
-
-![05](/assets/img/docs/portfolio/05.png){:.lead width="800" height="100" loading="lazy"}
-Tomcat 취약점 진단 결과 보고서
-{:.figcaption}
-
-![06](/assets/img/docs/portfolio/06.png){:.lead width="800" height="100" loading="lazy"}
-WEB/API 취약점 진단 결과 보고서
-{:.figcaption}
-
-![07](/assets/img/docs/portfolio/07.png){:.lead width="800" height="100" loading="lazy"}
-모듈 프로젝트1 아키텍처
-{:.figcaption}
-
-![08](/assets/img/docs/portfolio/08.png){:.lead width="800" height="100" loading="lazy"}
-최종 프로젝트 아키텍처
-{:.figcaption}
-
-![09](/assets/img/docs/portfolio/09.png){:.lead width="800" height="100" loading="lazy"}
-모듈 프로젝트2 - Blind SQL Injection(1)
-{:.figcaption}
-
-![10](/assets/img/docs/portfolio/10.png){:.lead width="800" height="100" loading="lazy"}
-모듈 프로젝트2 - Blind SQL Injection(2)
-{:.figcaption}
-
-![11](/assets/img/docs/portfolio/11.png){:.lead width="800" height="100" loading="lazy"}
-진단 수행 - Blind SQL Injection(1)
-{:.figcaption}
-
-![12](/assets/img/docs/portfolio/12.png){:.lead width="800" height="100" loading="lazy"}
-진단 수행 - Blind SQL Injection(2)
-{:.figcaption}
-
-![13](/assets/img/docs/portfolio/13.png){:.lead width="800" height="100" loading="lazy"}
-진단 수행 - Blind SQL Injection(3)
-{:.figcaption}
-
-![14](/assets/img/docs/portfolio/14.png){:.lead width="800" height="100" loading="lazy"}
-진단 수행 - Command Injection(1)
-{:.figcaption}
-
-![15](/assets/img/docs/portfolio/15.png){:.lead width="800" height="100" loading="lazy"}
-진단 수행 - Command Injection(2)
-{:.figcaption}
-
-![16](/assets/img/docs/portfolio/16.png){:.lead width="800" height="100" loading="lazy"}
-진단 수행 - Command Injection(3)
-{:.figcaption}
-
-![17](/assets/img/docs/portfolio/17.png){:.lead width="800" height="100" loading="lazy"}
-진단 수행 - 악성코드파일 업로드(1)
-{:.figcaption}
-
-![18](/assets/img/docs/portfolio/18.png){:.lead width="800" height="100" loading="lazy"}
-진단 수행 - 악성코드파일 업로드(2)
-{:.figcaption}
-
-
-
+<iframe allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write" frameborder="0" height="450" style="width:100%;max-width:660px;overflow:hidden;border-radius:10px;" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation" src="https://embed.music.apple.com/us/playlist/%EB%B4%84-%EB%85%B8%EB%9E%98-spring/pl.u-e98lMM9UzA3o80R"></iframe>
 
 
 [blog]: /
