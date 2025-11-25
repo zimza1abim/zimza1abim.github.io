@@ -24,7 +24,7 @@ jobs:
       - name: Install, build, and upload your site
         uses: withastro/action@v2
         with:
-          packageManager: npm # npm을 쓴다고 명시적으로 선언
+          package-manager: npm # 하이픈(-) 필수입니다
 
   deploy:
     needs: build
