@@ -1,24 +1,10 @@
 ---
-import Container from "@/components/container.astro";
-import Link from "@/components/ui/link.astro";
-import Dropdown from "./dropdown.astro";
-import { Astronav, MenuItems, MenuIcon } from "astro-navbar";
+// [경로 수정] navbar 폴더 안에 있다면 한 단계 위(../)로 나가서 container를 찾아야 합니다.
+// 파일명이 container.astro (소문자)인지 Container.astro (대문자)인지 확인하고 맞추세요.
+// 보통은 소문자 파일이면 아래처럼 씁니다.
+import Container from "../container.astro";
 
 const menuitems = [
-  {
-    title: "Features",
-    path: "#",
-    children: [
-      { title: "Action", path: "/" },
-      { title: "Another action", path: "#" },
-      { title: "Dropdown Submenu", path: "#" },
-      { title: "404 Page", path: "/404" },
-    ],
-  },
-  {
-    title: "Pricing",
-    path: "/pricing",
-  },
   {
     title: "About",
     path: "/about",
@@ -26,56 +12,123 @@ const menuitems = [
   {
     title: "Blog",
     path: "/blog",
+    // 메가 메뉴용 데이터 구조 (3단 컬럼)
+    children: [
+      {
+        title: "Explore",
+        items: [
+          { title: "All Posts", path: "/blog" },
+        ],
+      },
+      {
+        title: "Study : SK Shieldus",
+        items: [
+          { title: "AppSec", path: "/category/appsec" },
+          { title: "Cloud", path: "/category/cloud" },
+          { title: "Linux/Ubuntu", path: "/category/linux-ubuntu" },
+          { title: "Python", path: "/category/python" },
+          { title: "Sec Control", path: "/category/security-control" },
+          { title: "Vulnerability", path: "/category/security-vulnerability" },
+          { title: "White Hat", path: "/category/white-hat" },
+          { title: "Project", path: "/category/project" },
+        ],
+      },
+      {
+        title: "Obsidian",
+        items: [
+          { title: "Obsidian", path: "/category/obsidian" },
+        ],
+      },
+      {
+        title: "self-hosting",
+        items: [
+          { title: "Self-Hosting", path: "/category/self-hosting" },
+          { title: "Crowdsec", path: "/category/crowdsec" },
+          { title: "Bitwarden", path: "/category/bitwarden" },
+        ],
+      },
+    ],
   },
   {
-    title: "Contact",
-    path: "/contact",
+    title: "Music",
+    path: "/music",
   },
   {
-    title: "Pro Version",
-    badge: true,
-    path: "https://astroship-pro.web3templates.com/",
+    title: "Scribble",
+    path: "/personal",
+  },
+  {
+    title: "Playground",
+    path: "/reserve",
   },
 ];
 ---
 
 <Container>
-  <header class="flex flex-col lg:flex-row justify-between items-center my-5">
-    <Astronav>
-      <div class="flex w-full lg:w-auto items-center justify-between">
-        <a href="/" class="text-lg"
-          ><span class="font-bold text-slate-800">Astro</span><span
-            class="text-slate-500">ship</span
-          >
-        </a>
-        <div class="block lg:hidden">
-          <MenuIcon class="w-4 h-4 text-gray-800" />
-        </div>
-      </div>
-      <MenuItems class="hidden w-full lg:w-auto mt-2 lg:flex lg:mt-0">
-        <ul class="flex flex-col lg:flex-row lg:gap-3">
-          {
-            menuitems.map((item, index) => (
-              <>
-                {item.children && (
-                  <Dropdown
-                    title={item.title}
-                    children={item.children}
-                    lastItem={index === menuitems.length - 1}
-                  />
-                )}
+  <nav class="sticky top-4 z-50 bg-white/70 backdrop-blur-md border border-white/40 shadow-sm shadow-rose-100/20 rounded-full px-6 transition-all duration-300">
+    <div class="flex flex-wrap justify-between items-center py-3">
+      
+      <a href="/" class="font-bold text-lg flex items-center gap-2 text-stone-600 hover:text-rose-500 transition-colors group">
+        <span class="bg-gradient-to-br from-rose-400 to-rose-500 text-white w-8 h-8 flex items-center justify-center rounded-full text-sm shadow-lg shadow-rose-200 group-hover:scale-110 transition-transform">W</span>
+        <span class="tracking-tight">Winter<span class="text-rose-400">.log</span></span>
+      </a>
 
-                {!item.children && (
+      <div class="block lg:hidden">
+        <button id="astronav-menu" aria-label="Toggle Menu" class="text-stone-500 hover:text-rose-500">
+           <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path></svg>
+        </button>
+      </div>
+
+      <div class="hidden lg:flex items-center">
+        <ul class="flex flex-col lg:flex-row lg:gap-1 items-center"> {
+            menuitems.map((item) => (
+              <>
+                {item.children ? (
+                  /* [드롭다운/메가 메뉴] */
+                  <li class="relative group h-full flex items-center" aria-haspopup="true">
+                    
+                    {/* [수정 포인트] 
+                        1. py-3 -> py-2 (다른 메뉴와 높이 통일)
+                        2. mt-0.5 삭제 (아이콘이 글자를 누르지 않게 함)
+                    */}
+                    <button class="flex items-center gap-1 py-2 px-4 rounded-full text-sm text-stone-500 hover:text-rose-500 hover:bg-rose-50 font-medium transition-all cursor-default">
+                      <span>{item.title}</span>
+                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-3 h-3 group-hover:rotate-180 transition-transform duration-300">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+                      </svg>
+                    </button>
+                    
+                    {/* 투명 다리 (Hover Tunnel) */}
+                    <div class="absolute top-[100%] lg:-left-20 pt-4 invisible opacity-0 translate-y-2 group-hover:visible group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 ease-out z-50">
+                      
+                      {/* 메가 메뉴 박스 */}
+                      <div class="w-[600px] bg-white/95 backdrop-blur-xl shadow-xl shadow-rose-100/50 border border-white rounded-[2rem] p-6">
+                        <div class="grid grid-cols-3 gap-8">
+                          {item.children.map((column) => (
+                            <div class="flex flex-col gap-3">
+                              <h3 class="font-bold text-rose-400 text-xs uppercase tracking-widest border-b border-rose-100 pb-2 mb-1">
+                                {column.title}
+                              </h3>
+                              {column.items && column.items.map((link) => (
+                                <a 
+                                  href={link.path} 
+                                  class="text-sm text-stone-500 hover:text-rose-500 hover:translate-x-1 transition-all font-light block py-1"
+                                >
+                                  {link.title}
+                                </a>
+                              ))}
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+
+                    </div>
+                  </li>
+                ) : (
+                  /* [일반 메뉴] */
                   <li>
-                    <a
-                      href={item.path}
-                      class="flex lg:px-3 py-2 items-center text-gray-600 hover:text-gray-900">
-                      <span> {item.title}</span>
-                      {item.badge && (
-                        <span class="ml-1 px-2 py-0.5 text-[10px] animate-pulse font-semibold uppercase text-white bg-indigo-600 rounded-full">
-                          New
-                        </span>
-                      )}
+                    <a href={item.path} class="flex py-2 px-4 rounded-full text-sm text-stone-500 hover:text-rose-500 hover:bg-rose-50 font-medium transition-all">
+                      {item.title}
                     </a>
                   </li>
                 )}
@@ -83,17 +136,7 @@ const menuitems = [
             ))
           }
         </ul>
-        <div class="lg:hidden flex items-center mt-3 gap-4">
-          <Link href="#" style="muted" block size="md">Log in</Link>
-          <Link href="#" size="md" block>Sign up</Link>
-        </div>
-      </MenuItems>
-    </Astronav>
-    <div>
-      <div class="hidden lg:flex items-center gap-4">
-        <a href="#">Log in</a>
-        <Link href="#" size="md">Sign up</Link>
       </div>
     </div>
-  </header>
+  </nav>
 </Container>

@@ -1,0 +1,94 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Container from "../components/container.astro";
+
+// ▼▼▼ [입력란] 그냥 주소나 iframe 코드만 넣으세요 ▼▼▼
+const musicLinks = [
+  //
+  "https://open.spotify.com/playlist/0GF9Ve4kqJXmKn21W4O3xQ?si=17b807812b12416f",
+  //
+  `<iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/playlist/2llqHtJdNZutEzfotUNirp?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>`,
+  //
+  `<iframe allow="autoplay *; encrypted-media *;" frameborder="0" height="450" style="width:100%;max-width:660px;overflow:hidden;background:transparent;" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation" src="https://embed.music.apple.com/us/playlist/%EA%B0%80%EC%9D%84%EC%97%90-%EB%93%A3%EB%8A%94-%EB%9D%BD/pl.u-mJy8370Fz6dpV29"></iframe>`,
+  //
+  `<iframe allow="autoplay *; encrypted-media *;" frameborder="0" height="450" style="width:100%;max-width:660px;overflow:hidden;background:transparent;" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation" src="https://embed.music.apple.com/us/playlist/girltopia-mf/pl.u-aZb0al5TPd5kxJj"></iframe>`,
+
+];
+
+// 🛠️ [로직] 주소 변환기
+const getEmbedUrl = (input) => {
+  if (!input) return "";
+  let rawInput = input.trim();
+
+  // [Case A] iframe 태그
+  if (rawInput.includes('<iframe')) {
+    const match = rawInput.match(/src=["'](.*?)["']/);
+    return match ? match[1] : "";
+  }
+  // [Case B] YouTube
+  if (rawInput.includes('youtu.be/')) {
+    return `https://www.youtube.com/embed/${rawInput.split('youtu.be/')[1].split('?')[0]}`;
+  }
+  if (rawInput.includes('youtube.com/watch?v=')) {
+    return `https://www.youtube.com/embed/${rawInput.split('v=')[1].split('&')[0]}`;
+  }
+  // [Case C] Spotify 일반 링크
+  if (rawInput.includes('open.spotify.com') && !rawInput.includes('/embed')) {
+     return rawInput.replace('.com/', '.com/embed/');
+  }
+  
+  return rawInput; // 그 외는 그대로 반환
+};
+---
+
+<Layout title="Music Diary">
+  <div class="max-w-7xl mx-auto px-6">
+    
+    <div class="text-center mt-24 mb-28 relative">
+      <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[12rem] opacity-5 select-none text-rose-300 font-serif">♥</div>
+      <span class="inline-block bg-rose-100 text-rose-500 text-sm font-bold px-5 py-2 rounded-full mb-6 tracking-widest border border-rose-200 shadow-sm">
+        PLAYLIST
+      </span>
+      <h1 class="text-5xl lg:text-7xl font-black tracking-tight text-stone-800 mb-4">
+        Music <span class="text-rose-400 italic">Diary</span>
+      </h1>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-12 mb-40">
+      {musicLinks.map((entry) => {
+        const src = getEmbedUrl(entry);
+        // 유튜브인지 확인 (비율 조절용)
+        const isVideo = src.includes("youtube");
+        
+        return (
+          /* group hover 시 살짝 위로 뜨는 효과
+             bg-white, border, shadow: 깔끔한 카드 느낌 유지
+          */
+          <div class="group bg-white p-4 rounded-[3rem] shadow-[0_20px_40px_-15px_rgba(251,113,133,0.15)] border-2 border-rose-50 hover:-translate-y-2 transition-all duration-500 relative">
+            
+            <div class={`relative w-full overflow-hidden rounded-[2.5rem] bg-rose-50 ${isVideo ? 'aspect-video' : 'aspect-square'}`}>
+              {src ? (
+                <iframe 
+                  src={src} 
+                  class="w-full h-full"
+                  frameborder="0" 
+                  allowfullscreen 
+                  allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
+                  loading="lazy"
+                  style="border-radius: 2.5rem;"
+                ></iframe>
+              ) : (
+                <div class="flex flex-col items-center justify-center h-full text-rose-300">
+                  <span>링크 오류 💔</span>
+                </div>
+              )}
+              
+            </div>
+
+          </div>
+        )
+      })}
+    </div>
+
+  </div>
+</Layout>

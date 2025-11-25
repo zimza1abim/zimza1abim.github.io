@@ -1,0 +1,132 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+import Container from "../../components/container.astro";
+
+// 1. 페이지네이션 설정 (getStaticPaths)
+export async function getStaticPaths({ paginate }) {
+  // 모든 글 가져오기
+  const allPosts = await getCollection("blog");
+  
+  // 최신순 정렬
+  const sortedPosts = allPosts.sort(
+    (a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf()
+  );
+
+  // paginate 함수가 알아서 6개씩 끊어서 페이지를 만들어줍니다.
+  // 예: /blog (1페이지), /blog/2 (2페이지), /blog/3 (3페이지) ...
+  return paginate(sortedPosts, { pageSize: 6 });
+}
+
+// 2. 현재 페이지 데이터 받아오기
+const { page } = Astro.props;
+const defaultImage = "https://images.unsplash.com/photo-1493612276216-ee3925520721?q=80&w=1000&auto=format&fit=crop";
+---
+
+<Layout title="Blog">
+  <Container>
+    
+    <div class="text-center mt-20 mb-20">
+      <div class="w-10 h-1 bg-rose-300 mx-auto mb-6 rounded-full"></div>
+      <h1 class="text-4xl lg:text-5xl font-bold tracking-tight text-stone-800 mb-4">
+        All Posts
+      </h1>
+      <p class="text-stone-500 font-light text-lg">
+        블로그 포스팅  <br class="sm:hidden" /> 모아보기
+        <span class="block mt-2 text-sm text-rose-400 font-medium">
+          (Page {page.currentPage} / {page.lastPage})
+        </span>
+      </p>
+    </div>
+
+    <div class="grid gap-10 sm:grid-cols-2 lg:grid-cols-3 mb-20">
+      {
+        page.data.map((post) => {
+          const imageSrc = post.data.image?.src || defaultImage;
+          const category = post.data.category || post.data.categories?.[0] || "General"; // 배열이든 문자열이든 대응
+          
+          return (
+            <a href={`/blog/${post.slug}`} class="group block h-full">
+              <div class="h-full flex flex-col">
+                
+                <div class="relative overflow-hidden rounded-[2rem] mb-6 aspect-[4/3] bg-stone-100">
+                  <img
+                    src={imageSrc}
+                    alt={post.data.title}
+                    class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                  <div class="absolute top-4 left-4">
+                    <span class="bg-white/80 backdrop-blur-md text-stone-600 text-[10px] font-bold tracking-widest px-3 py-1 rounded-full uppercase border border-white/50">
+                      {category}
+                    </span>
+                  </div>
+                </div>
+
+                <div class="text-center px-2">
+                  <div class="text-xs text-stone-400 mb-3 tracking-widest uppercase">
+                    {post.data.publishDate.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
+                  </div>
+
+                  <h2 class="text-xl font-bold text-stone-800 mb-3 leading-snug group-hover:text-rose-500 transition-colors duration-300">
+                    {post.data.title}
+                  </h2>
+                  
+                  <div class="mt-4 inline-block border-b border-transparent group-hover:border-rose-300 transition-all duration-300">
+                    <span class="text-xs font-medium text-stone-400 group-hover:text-rose-400">Read Story</span>
+                  </div>
+                </div>
+              </div>
+            </a>
+          );
+        })
+      }
+    </div>
+
+    <div class="flex justify-center items-center gap-4 mb-32">
+      {/* 이전 페이지 버튼 */}
+      {page.url.prev ? (
+        <a 
+          href={page.url.prev} 
+          class="px-6 py-3 rounded-full border border-stone-200 text-stone-600 hover:border-rose-300 hover:text-rose-500 transition-all duration-300 flex items-center gap-2"
+        >
+          ← Prev
+        </a>
+      ) : (
+        <span class="px-6 py-3 rounded-full border border-stone-100 text-stone-300 cursor-not-allowed flex items-center gap-2">
+          ← Prev
+        </span>
+      )}
+
+      {/* 페이지 번호들 (1 2 3 ...) */}
+      <div class="hidden sm:flex items-center gap-2">
+        {Array.from({ length: page.lastPage }, (_, i) => i + 1).map((num) => (
+          <a
+            href={num === 1 ? "/blog" : `/blog/${num}`}
+            class={`w-10 h-10 flex items-center justify-center rounded-full transition-all duration-300 ${
+              page.currentPage === num
+                ? "bg-rose-500 text-white shadow-lg shadow-rose-200"
+                : "text-stone-500 hover:bg-rose-50 hover:text-rose-500"
+            }`}
+          >
+            {num}
+          </a>
+        ))}
+      </div>
+
+      {/* 다음 페이지 버튼 */}
+      {page.url.next ? (
+        <a 
+          href={page.url.next} 
+          class="px-6 py-3 rounded-full border border-stone-200 text-stone-600 hover:border-rose-300 hover:text-rose-500 transition-all duration-300 flex items-center gap-2"
+        >
+          Next →
+        </a>
+      ) : (
+        <span class="px-6 py-3 rounded-full border border-stone-100 text-stone-300 cursor-not-allowed flex items-center gap-2">
+          Next →
+        </span>
+      )}
+    </div>
+
+  </Container>
+</Layout>

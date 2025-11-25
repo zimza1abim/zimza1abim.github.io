@@ -1,17 +1,103 @@
 ---
-import Container from "@/components/container.astro";
-import Cta from "@/components/cta.astro";
-import Features from "@/components/features.astro";
-import Hero from "@/components/hero.astro";
-import Logos from "@/components/logos.astro";
-import Layout from "@/layouts/Layout.astro";
+import Layout from "../layouts/Layout.astro";
+
+// 최신 글 가져오기 (위젯용)
+import { getCollection } from "astro:content";
+const allPosts = await getCollection("blog");
+const latestPost = allPosts.sort((a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf())[0];
 ---
 
-<Layout title="">
-  <Container>
-    <Hero />
-    <Features />
-    <Logos />
-    <Cta />
-  </Container>
+<Layout title="Winter's Desk">
+  <div class="min-h-screen relative overflow-hidden bg-gradient-to-br from-rose-50 via-white to-stone-100 flex flex-col items-center justify-center p-6">
+    
+    <div class="absolute top-[-10%] left-[-10%] w-[500px] h-[500px] bg-rose-200/40 rounded-full blur-[120px] animate-pulse"></div>
+    <div class="absolute bottom-[-10%] right-[-10%] w-[600px] h-[600px] bg-indigo-100/40 rounded-full blur-[120px]"></div>
+
+    <div class="relative z-10 w-full max-w-5xl">
+      
+      <div class="bg-white/60 backdrop-blur-xl border border-white/50 rounded-[3rem] shadow-2xl shadow-rose-100/50 p-8 md:p-12 text-center mb-10 relative overflow-hidden group">
+        <div class="absolute top-8 left-8 flex gap-2">
+          <div class="w-3 h-3 rounded-full bg-rose-400"></div>
+          <div class="w-3 h-3 rounded-full bg-yellow-400"></div>
+          <div class="w-3 h-3 rounded-full bg-green-400"></div>
+        </div>
+
+        <span class="inline-block mt-4 mb-4 text-4xl animate-bounce">🎀</span>
+        
+        <h1 class="text-5xl md:text-7xl font-black text-stone-800 tracking-tight mb-4">
+          Winter<span class="text-rose-400">.log</span>
+        </h1>
+        
+        <p class="text-stone-500 text-lg md:text-xl font-light leading-relaxed max-w-2xl mx-auto">
+          보안과 코딩을 좋아하는 <span class="text-stone-800 font-medium">보안 엔지니어</span>의<br/>
+          <span class="text-rose-500 font-medium bg-rose-50 px-2 py-1 rounded-lg">작고 소중한</span> 기록 공간입니다.
+        </p>
+
+        <div class="absolute -top-20 -right-20 w-40 h-40 bg-white/40 blur-3xl rounded-full group-hover:scale-150 transition-transform duration-700"></div>
+      </div>
+
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+        
+        <a href="/blog" class="col-span-2 bg-white rounded-[2.5rem] p-8 shadow-lg shadow-stone-100 border border-white hover:-translate-y-2 hover:shadow-xl hover:shadow-rose-100 transition-all duration-300 flex items-center justify-between group">
+          <div class="text-left">
+            <span class="text-xs font-bold text-rose-400 uppercase tracking-widest bg-rose-50 px-3 py-1 rounded-full">New Post</span>
+            <h3 class="text-xl md:text-2xl font-bold text-stone-800 mt-3 line-clamp-1 group-hover:text-rose-500 transition-colors">
+              {latestPost ? latestPost.data.title : "블로그 구경하기"}
+            </h3>
+            <p class="text-stone-400 text-sm mt-1">새로운 글 읽으러 가기 →</p>
+          </div>
+          <div class="text-5xl group-hover:scale-110 transition-transform duration-300">📝</div>
+        </a>
+
+        <a href="/music" class="bg-gradient-to-br from-rose-400 to-rose-500 rounded-[2.5rem] p-6 shadow-lg shadow-rose-200 text-white flex flex-col justify-between hover:-translate-y-2 transition-transform duration-300 relative overflow-hidden">
+          <div class="flex justify-between items-start z-10">
+            <span class="text-white/80 text-xs font-bold uppercase">Now Playing</span>
+            <span class="animate-spin-slow text-xl">💿</span>
+          </div>
+          <div class="z-10">
+            <h3 class="font-bold text-lg leading-tight">My<br>Playlist</h3>
+          </div>
+          <div class="absolute -bottom-4 -right-4 w-24 h-24 bg-white/20 rounded-full blur-xl"></div>
+        </a>
+
+        <a href="https://github.com/zimza1abim" target="_blank" class="bg-stone-800 rounded-[2.5rem] p-6 shadow-lg text-white flex flex-col justify-center items-center text-center hover:-translate-y-2 transition-transform duration-300 group">
+          <div class="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center mb-3 text-2xl group-hover:rotate-12 transition-transform">
+            👾
+          </div>
+          <h3 class="font-bold">Github</h3>
+          <p class="text-stone-400 text-xs mt-1">Source Code</p>
+        </a>
+
+        <a href="/personal" class="bg-yellow-100/80 backdrop-blur-sm border border-yellow-200 rounded-[2.5rem] p-6 shadow-lg rotate-2 hover:rotate-0 transition-transform duration-300 flex flex-col justify-center items-center text-center">
+            <div class="text-3xl mb-2">✏️</div>
+            <h3 class="font-bold text-stone-700">Scribble</h3>
+            <p class="text-stone-500 text-xs">낙서장</p>
+        </a>
+
+        <a href="/reserve" class="col-span-2 md:col-span-1 bg-white/40 backdrop-blur-md border border-white/60 rounded-[2.5rem] p-6 flex flex-col justify-center items-center hover:bg-white/60 transition-colors cursor-pointer">
+           <span class="text-stone-400 text-sm font-medium dashed-border">🚧 Playground</span>
+        </a>
+
+      </div>
+    </div>
+
+    <div class="mt-12 bg-white/80 backdrop-blur-xl border border-white/50 px-6 py-4 rounded-full shadow-2xl shadow-stone-200/50 flex items-center gap-6 animate-fade-in-up">
+       <a href="/about" class="w-12 h-12 flex items-center justify-center rounded-2xl hover:bg-rose-100 text-2xl transition-colors" title="About">👩🏻‍💻</a>
+       <div class="w-px h-8 bg-stone-200"></div> <a href="/blog" class="w-12 h-12 flex items-center justify-center rounded-2xl hover:bg-rose-100 text-2xl transition-colors" title="Blog">📚</a>
+       <a href="/music" class="w-12 h-12 flex items-center justify-center rounded-2xl hover:bg-rose-100 text-2xl transition-colors" title="Music">🎧</a>
+       <div class="w-px h-8 bg-stone-200"></div> <a href="mailto:your@email.com" class="w-12 h-12 flex items-center justify-center rounded-2xl hover:bg-rose-100 text-2xl transition-colors" title="Contact">💌</a>
+    </div>
+
+  </div>
 </Layout>
+
+<style>
+  /* 천천히 도는 애니메이션 (LP판 효과) */
+  @keyframes spin-slow {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+  .animate-spin-slow {
+    animation: spin-slow 8s linear infinite;
+  }
+</style>

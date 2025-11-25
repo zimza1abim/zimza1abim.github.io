@@ -1,57 +1,139 @@
 ---
-import { getCollection } from "astro:content";
-import { Picture } from "astro:assets";
-import Layout from "@/layouts/Layout.astro";
-import Container from "@/components/container.astro";
-import Sectionhead from "@/components/sectionhead.astro";
+import Layout from "../layouts/Layout.astro";
+import Container from "../components/container.astro";
 
-// Filter team entries with 'draft: false' & date before current date
-const publishedTeamMembers = await getCollection("team", ({ data }) => {
-  return !data.draft && data.publishDate < new Date();
-});
+// ▼▼▼ 내 정보 입력란 ▼▼▼
+const profile = {
+  name: "Zimza1abim",
+  role: "Security Engineer",
+  intro: "보안과 개발의 경계에서\n즐거움을 찾는 엔지니어입니다.",
+  // 프로필 사진 주소 (정사각형 추천)
+  image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=1000&auto=format&fit=crop",
+  
+  // 키워드 스티커
+  tags: ["#ENTP", "#Pink_Lover", "#Cat_Person", "#Night_Owl"],
+  
+  // 기술 스택
+  skills: [
+    { name: "Python", icon: "🐍" },
+    { name: "Security", icon: "🛡️" },
+    { name: "Network", icon: "🌐" },
+    { name: "Astro", icon: "🚀" },
+    { name: "React", icon: "⚛️" },
+    { name: "Git", icon: "🐱" },
+  ]
+};
+
+const history = [
+  { year: "2024", title: "Now", desc: "보안 프로젝트 진행 중" },
+  { year: "2023", title: "SeSAC 1기", desc: "클라우드 보안 과정 수료" },
+  { year: "2022", title: "Start", desc: "코딩과 보안에 입문" },
+];
 ---
 
-<Layout title="About">
+<Layout title="About Me">
   <Container>
-    <Sectionhead>
-      <Fragment slot="title">About</Fragment>
-      <Fragment slot="desc">We are a small passionate team.</Fragment>
-    </Sectionhead>
-
-    <div class="flex flex-col gap-3 mx-auto max-w-4xl mt-16">
-      <h2 class="font-bold text-3xl text-gray-800">
-        Empowering the world with Astro.
-      </h2>
-      <p class="text-lg leading-relaxed text-slate-500">
-        We're a multi-cultural team from around the world! We come from diverse
-        backgrounds, bringing different personalities, experiences and skills to
-        the job. This is what makes our team so special.
-      </p>
-    </div>
-    <div class="grid md:grid-cols-3 gap-10 mx-auto max-w-4xl mt-12">
-      {
-        publishedTeamMembers.map((teamMemberEntry) => (
-          <div class="group">
-            <div class="w-full aspect-square">
-              <Picture
-                src={teamMemberEntry.data.avatar.src}
-                alt={teamMemberEntry.data.avatar.alt}
-                sizes="(max-width: 800px) 100vw, 400px"
-                width={400}
-                height={400}
-                class="w-full rounded-sm transition group-hover:-translate-y-1 group-hover:shadow-xl bg-white object-cover object-center aspect-square"
+    
+    <div class="max-w-5xl mx-auto mt-10 mb-32 px-4">
+      
+      <div class="flex flex-col md:flex-row gap-12 items-center mb-24">
+        
+        <div class="relative group shrink-0">
+          <div class="absolute -top-3 left-1/2 -translate-x-1/2 w-24 h-8 bg-rose-200/80 rotate-[-2deg] backdrop-blur-sm shadow-sm z-20"></div>
+          
+          <div class="relative bg-white p-3 pb-12 rounded-sm shadow-2xl rotate-[-3deg] group-hover:rotate-0 transition-transform duration-500 ease-out w-64 md:w-80">
+            <div class="aspect-[4/5] overflow-hidden bg-stone-100 filter sepia-[0.2]">
+              <img 
+                src={profile.image} 
+                alt="Profile" 
+                class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
               />
             </div>
-
-            <div class="mt-4 text-center">
-              <h2 class="text-lg text-gray-800">{teamMemberEntry.data.name}</h2>
-              <h3 class="text-sm text-slate-500">
-                {teamMemberEntry.data.title}
-              </h3>
+            <div class="absolute bottom-4 left-0 right-0 text-center font-serif italic text-stone-600 text-lg">
+              {profile.name}
             </div>
           </div>
-        ))
-      }
+
+          <div class="absolute -bottom-6 -right-6 text-5xl animate-bounce delay-700">🎀</div>
+        </div>
+
+        <div class="text-center md:text-left flex-1">
+          <span class="inline-block px-4 py-1.5 rounded-full bg-rose-100 text-rose-500 text-xs font-bold tracking-widest mb-6 uppercase border border-rose-200">
+            About Me
+          </span>
+          
+          <h1 class="text-5xl lg:text-7xl font-black text-stone-800 mb-6 tracking-tight leading-tight">
+            Hi, I'm <br/>
+            <span class="text-transparent bg-clip-text bg-gradient-to-r from-rose-400 to-rose-600">{profile.name}.</span>
+          </h1>
+          
+          <p class="text-lg text-stone-500 font-light leading-loose whitespace-pre-line mb-8">
+            {profile.intro}
+          </p>
+
+          <div class="flex flex-wrap gap-3 justify-center md:justify-start">
+            {profile.tags.map(tag => (
+              <span class="px-4 py-2 bg-white border border-stone-100 rounded-[2rem] text-stone-600 text-sm font-medium shadow-sm hover:shadow-md hover:-translate-y-1 hover:text-rose-500 transition-all cursor-default">
+                {tag}
+              </span>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        
+        <div class="bg-white/60 backdrop-blur-xl border border-white p-10 rounded-[3rem] shadow-xl shadow-rose-100/30 relative overflow-hidden group">
+          <div class="absolute -right-10 -top-10 w-40 h-40 bg-rose-100 rounded-full blur-3xl opacity-50 group-hover:scale-150 transition-transform duration-700"></div>
+          
+          <h3 class="text-2xl font-bold text-stone-800 mb-8 flex items-center gap-2">
+            <span class="text-2xl">⚡</span> Skills
+          </h3>
+          
+          <div class="flex flex-wrap gap-4">
+            {profile.skills.map(skill => (
+              <div class="flex flex-col items-center justify-center w-20 h-20 bg-white rounded-3xl shadow-sm border border-stone-50 hover:scale-110 hover:shadow-md hover:border-rose-200 transition-all duration-300">
+                <span class="text-2xl mb-1">{skill.icon}</span>
+                <span class="text-[10px] font-bold text-stone-500 uppercase tracking-wide">{skill.name}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div class="bg-rose-50/50 border border-rose-100 p-10 rounded-[3rem] relative">
+          <h3 class="text-2xl font-bold text-stone-800 mb-8 flex items-center gap-2">
+            <span class="text-2xl">🚀</span> Journey
+          </h3>
+
+          <div class="relative border-l-2 border-rose-200 ml-3 space-y-10">
+            {history.map(item => (
+              <div class="relative pl-8 group">
+                <div class="absolute -left-[9px] top-1 w-4 h-4 bg-white border-2 border-rose-400 rounded-full group-hover:bg-rose-400 transition-colors"></div>
+                
+                <span class="text-xs font-bold text-rose-400 block mb-1 tracking-widest">{item.year}</span>
+                <h4 class="text-lg font-bold text-stone-700 group-hover:text-rose-600 transition-colors">{item.title}</h4>
+                <p class="text-stone-500 text-sm font-light mt-1">{item.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+      </div>
+
+      <div class="mt-12 bg-stone-800 rounded-[3rem] p-12 text-center text-white relative overflow-hidden group">
+        <div class="absolute top-10 left-10 text-rose-400 text-xl opacity-50 animate-pulse">✦</div>
+        <div class="absolute bottom-10 right-10 text-yellow-400 text-xl opacity-50 animate-pulse" style="animation-delay: 0.5s">✦</div>
+
+        <h2 class="text-3xl md:text-4xl font-bold mb-4">Let's Connect!</h2>
+        <p class="text-stone-400 font-light mb-8">
+          새로운 프로젝트나 커피챗은 언제나 환영해요 :)
+        </p>
+        
+        <a href="mailto:example@email.com" class="inline-block bg-white text-stone-900 px-8 py-4 rounded-full font-bold hover:bg-rose-400 hover:text-white hover:scale-105 transition-all duration-300 shadow-lg shadow-rose-900/20">
+          💌 Send Email
+        </a>
+      </div>
+
     </div>
   </Container>
 </Layout>

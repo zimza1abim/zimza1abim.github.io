@@ -1,0 +1,28 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Container from "../components/container.astro";
+---
+
+<Layout title="Playground">
+  <Container>
+    <div class="min-h-[50vh] flex flex-col items-center justify-center text-center mt-10">
+      
+      <div class="bg-rose-50 w-32 h-32 rounded-full flex items-center justify-center mb-8 animate-bounce">
+        <span class="text-6xl">🚧</span>
+      </div>
+
+      <h1 class="text-4xl lg:text-5xl font-bold tracking-tight text-stone-800 mb-4">
+        Coming Soon
+      </h1>
+      
+      <p class="text-stone-500 font-light text-lg max-w-md mx-auto mb-10">
+        이곳은 새로운 아이디어를 실험하거나,<br>
+        나중에 채워질 예비 공간입니다.
+      </p>
+
+      <a href="/" class="px-8 py-3 bg-stone-800 text-white rounded-full font-medium hover:bg-rose-400 transition-colors duration-300">
+        홈으로 돌아가기
+      </a>
+    </div>
+  </Container>
+</Layout>

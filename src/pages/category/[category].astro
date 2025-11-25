@@ -1,0 +1,127 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import Container from '../../components/container.astro';
+
+export async function getStaticPaths() {
+  const allPosts = await getCollection('blog');
+  
+  // 1. 각 글의 카테고리 결정 (우선순위: Frontmatter > 폴더명)
+  const postsWithCategory = allPosts.map(post => {
+    let category = "General";
+
+    // (A) 파일 안에 category가 명시되어 있으면 최우선 사용
+    if (post.data.category) {
+      category = post.data.category;
+    }
+    // (B) 명시 안 했으면 폴더 이름으로 추측 (Deep Folder 지원)
+    else {
+      // 윈도우 경로(\)를 맥/리눅스 경로(/)로 통일
+      const normalizedId = post.id.replace(/\\/g, '/');
+      const folders = normalizedId.split('/');
+      
+      // 파일명 바로 위의 폴더를 가져옴 (예: study/appsec/post.md -> appsec)
+      if (folders.length >= 2) {
+        const parentFolder = folders[folders.length - 2];
+        // 첫 글자 대문자로 변환 (appsec -> Appsec)
+        category = parentFolder.charAt(0).toUpperCase() + parentFolder.slice(1);
+      }
+    }
+
+    return {
+      ...post,
+      computedCategory: category
+    };
+  });
+
+  // 2. 존재하는 모든 카테고리 추출 (중복 제거)
+  const uniqueCategories = [
+    ...new Set(postsWithCategory.map((post) => post.computedCategory))
+  ];
+
+  // 3. 페이지 생성
+  return uniqueCategories.map((category) => {
+    // 해당 카테고리 글만 필터링 (대소문자 무시: AppSec == appsec)
+    const filteredPosts = postsWithCategory.filter(
+      (post) => post.computedCategory.toLowerCase() === category.toLowerCase()
+    );
+
+    // 최신순 정렬
+    filteredPosts.sort((a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf());
+    
+    return {
+      // URL은 소문자로 생성 (/category/appsec)
+      params: { category: category.toLowerCase() },
+      props: { 
+        // 화면 표시용 이름은 원래 대소문자 유지 (AppSec)
+        categoryName: category, 
+        posts: filteredPosts 
+      },
+    };
+  });
+}
+
+const { categoryName, posts } = Astro.props;
+---
+
+<Layout title={`${categoryName} | Blog`}>
+  <Container>
+    
+    <div class="text-center mt-20 mb-20">
+      <div class="w-10 h-1 bg-rose-300 mx-auto mb-6 rounded-full"></div>
+      
+      <h1 class="text-4xl lg:text-5xl font-bold tracking-tight text-stone-800 mb-4 capitalize">
+        {categoryName}
+      </h1>
+      
+      <p class="text-stone-500 font-light text-lg">
+        총 <span class="text-rose-500 font-medium">{posts.length}</span>개의 글이 있습니다.
+      </p>
+    </div>
+
+    <div class="grid gap-10 sm:grid-cols-2 lg:grid-cols-3 mb-32">
+      {
+        posts.map((post) => (
+          <a href={`/blog/${post.slug}`} class="group block h-full">
+            <div class="h-full flex flex-col">
+              
+              <div class="relative overflow-hidden rounded-[2rem] mb-6 aspect-[4/3]">
+                {post.data.image?.src ? (
+                  <img 
+                    src={post.data.image.src} 
+                    alt={post.data.image.alt || post.data.title} 
+                    class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                ) : (
+                  <div class="w-full h-full bg-stone-100 flex items-center justify-center group-hover:bg-rose-50 transition-colors duration-500">
+                    <span class="text-3xl opacity-50">☁️</span>
+                  </div>
+                )}
+                
+                <div class="absolute top-4 left-4">
+                  <span class="bg-white/80 backdrop-blur-md text-stone-600 text-[10px] font-bold tracking-widest px-3 py-1 rounded-full uppercase border border-white/50">
+                    {post.computedCategory}
+                  </span>
+                </div>
+              </div>
+
+              <div class="text-center px-2">
+                <div class="text-xs text-stone-400 mb-3 tracking-widest uppercase">
+                   {post.data.publishDate?.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }) || ""}
+                </div>
+
+                <h2 class="text-xl font-bold text-stone-800 mb-3 leading-snug group-hover:text-rose-500 transition-colors duration-300">
+                  {post.data.title}
+                </h2>
+                
+                <div class="mt-4 inline-block border-b border-transparent group-hover:border-rose-300 transition-all duration-300">
+                  <span class="text-xs font-medium text-stone-400 group-hover:text-rose-400">Read More</span>
+                </div>
+              </div>
+            </div>
+          </a>
+        ))
+      }
+    </div>
+  </Container>
+</Layout>
