@@ -1,19 +1,15 @@
 name: Deploy to GitHub Pages
 
 on:
-  # main 브랜치에 push가 발생하면 실행
   push:
     branches: [ main ]
-  # 수동으로 실행할 수 있게 하는 옵션
   workflow_dispatch:
 
-# 권한 설정 (필수)
 permissions:
   contents: read
   pages: write
   id-token: write
 
-# 동시 실행 방지
 concurrency:
   group: "pages"
   cancel-in-progress: false
@@ -27,7 +23,8 @@ jobs:
       
       - name: Install, build, and upload your site
         uses: withastro/action@v2
-        # npm을 사용하므로 별도 패키지 매니저 설정 불필요 (자동 감지)
+        with:
+          packageManager: npm # npm을 쓴다고 명시적으로 선언
 
   deploy:
     needs: build
