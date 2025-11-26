@@ -19,107 +19,122 @@ const resolvedImageWithDomain = new URL(
 
 const { title } = Astro.props;
 
+// [수정] 사이트 이름 변경 (Zimza1abim.log)
 const makeTitle = title
-  ? title + " | " + "Astroship"
-  : "Astroship - Starter Template for Astro with Tailwind CSS";
+  ? title + " | " + "Zimza1abim.log"
+  : "Zimza1abim.log - Security & Tech Blog";
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="ko" class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
 
-    <!-- <link rel="preload" as="image" href={src} alt="Hero" /> -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700&display=swap" rel="stylesheet">
+
     <SEO
       title={makeTitle}
-      description="Astroship is a starter website template for Astro built with TailwindCSS."
+      description="Security Engineer Zimza1abim's Tech & Life Blog."
       canonical={canonicalURL}
       twitter={{
-        creator: "@surjithctly",
-        site: "@web3templates",
+        creator: "@zimza1abim", // 본인 아이디로 수정 가능
+        site: "@zimza1abim",
         card: "summary_large_image",
       }}
       openGraph={{
         basic: {
           url: canonicalURL,
           type: "website",
-          title: `Astroship - Starter Template for Astro`,
+          title: `Zimza1abim.log - Security & Tech Blog`,
           image: resolvedImageWithDomain,
         },
         image: {
-          alt: "Astroship Homepage Screenshot",
+          alt: "Zimza1abim Blog Homepage",
         },
       }}
     />
   </head>
-  <body>
+  
+  <body class="bg-rose-50 text-stone-800 antialiased selection:bg-rose-200 selection:text-rose-900 font-sans overflow-x-hidden flex flex-col min-h-screen">
+    
+    <div class="fixed inset-0 -z-10 bg-[radial-gradient(ellipse_at_top_left,_var(--tw-gradient-stops))] from-rose-100/40 via-transparent to-transparent pointer-events-none"></div>
+    <div class="fixed inset-0 -z-10 bg-[radial-gradient(ellipse_at_bottom_right,_var(--tw-gradient-stops))] from-indigo-100/40 via-transparent to-transparent pointer-events-none"></div>
+
     <Navbar />
-    <slot />
+    
+    <main class="flex-grow relative z-10">
+      <slot />
+    </main>
+    
     <Footer />
+
     <style is:global>
-    body { 
-    /* 기본 텍스트 색상: 옅은 배경에 잘 보이도록 진한 먹색 유지 */
-    color: #3f3f46; /* Tailwind stone-700 */
-    line-height: 1.75; /* 행간 넓게 (가독성 유지) */
-    font-size: 1.05rem; /* 기본 폰트 크기 살짝 키움 */
-    font-family: 'Outfit', sans-serif; 
-}
+      /* 1. 글로벌 타이포그래피 & 가독성 설정 */
+      body { 
+        /* 배경이 밝으므로 글자는 진하게(#333) 해서 가독성 확보 */
+        color: #333333; 
+        line-height: 1.75; /* 줄 간격 넓게 */
+        font-size: 1.05rem; /* 글자 크기 살짝 키움 */
+        font-family: 'Outfit', sans-serif; /* 폰트 적용 */
+      }
 
-img { content-visibility: auto; }
+      img { content-visibility: auto; }
 
-/* 1. 코드 블록 디자인 (```python 같은 블록) - 핑크빛 배경과 그림자 강조 */
-pre {
-    /* 배경을 아주 연한 핑크 톤으로 변경 */
-    background-color: #fffafc !important; /* Very light pink tint */
-    border: 2px solid #fbcfe8; /* rose-200 border */
-    border-radius: 2rem; /* 둥글게 */
-    padding: 1.5rem;
-    
-    /* 핑크빛 그림자 강하게 강조 */
-    box-shadow: 0 15px 30px -10px rgba(251, 113, 133, 0.2); /* Rose shadow tint increased */
-    
-    /* 가독성 */
-    overflow-x: auto;
-    line-height: 1.65;
-    font-size: 0.95rem;
-    color: #333 !important;
-    margin-top: 2rem;
-    margin-bottom: 2rem;
-}
+      /* 2. 코드 블록 디자인 (연한 분홍 배경 + 진한 글씨) */
+      pre {
+        background-color: #fffafc !important; /* 아주 연한 핑크 틴트 */
+        border: 2px solid #fbcfe8; /* rose-200 테두리 */
+        border-radius: 2rem; /* 둥근 모서리 */
+        padding: 1.5rem;
+        
+        /* 핑크빛 그림자 */
+        box-shadow: 0 15px 30px -10px rgba(251, 113, 133, 0.2); 
+        
+        /* 코드 가독성 */
+        overflow-x: auto;
+        line-height: 1.65;
+        font-size: 0.95rem;
+        color: #333 !important; /* 코드 글자색 진하게 */
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+      }
 
-/* 2. 인라인 코드 (문장 중간에 `코드`) - 로즈색 대비 강조 */
-:not(pre) > code {
-    background-color: #ffe4e6; /* light rose background */
-    color: #a40033; /* Darker rose/red for high contrast */
-    padding: 0.3rem 0.5rem;
-    border-radius: 0.5rem;
-    font-weight: 500;
-}
+      /* 3. 인라인 코드 (본문 중간 코드 강조) */
+      :not(pre) > code {
+        background-color: #ffe4e6; /* light rose background */
+        color: #a40033; /* Dark rose/red for contrast */
+        padding: 0.2rem 0.4rem;
+        border-radius: 0.4rem;
+        font-weight: 500;
+        font-size: 0.9em;
+      }
 
-/* 3. 스크롤바 커스텀 - 핑크색 강조 */
-::-webkit-scrollbar {
-    width: 8px;
-}
-::-webkit-scrollbar-track {
-    background: transparent;
-}
-::-webkit-scrollbar-thumb {
-    background: #fb7185; /* rose-400: 더 진한 핑크 */
-    border-radius: 10px;
-    border: 2px solid #fff; /* 흰색 테두리 추가로 분리감 증대 */
-}
-::-webkit-scrollbar-thumb:hover {
-    background: #e11d48; /* rose-600: 호버 시 더 강한 핑크 */
-}
+      /* 4. 스크롤바 커스텀 (핑크) */
+      ::-webkit-scrollbar {
+        width: 10px;
+      }
+      ::-webkit-scrollbar-track {
+        background: transparent;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #fda4af; /* rose-300 */
+        border-radius: 10px;
+        border: 2px solid #fff; /* 흰색 테두리로 깔끔하게 */
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #fb7185; /* rose-400 */
+      }
 
-/* 4. 드래그 색상 */
-::selection {
-    background-color: #fecdd3; /* rose-200 */
-    color: #881337; /* rose-900 */
-}
+      /* 5. 드래그 색상 */
+      ::selection {
+        background-color: #fecdd3; /* rose-200 */
+        color: #881337; /* rose-900 */
+      }
     </style>
   </body>
 </html>
